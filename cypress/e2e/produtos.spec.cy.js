@@ -3,13 +3,17 @@
 describe('Funcionalidade página de produtos', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('produtos/')
     });
+
+    afterEach(() => {
+        cy.screenshot()
+});
 
     it('Deve selecionar um produto da lista', () => {
         cy.get('[class="product-block grid"]')
             // .first() > Se eu quiser pegar o primeiro produto
-            // .last() > Se eu quiser oegar o último
+            // .last() > Se eu quiser pegar o último
             // .eq(3) > Se eu quiser escolher por número, o primeiro é "0"
             // .contains > Se eu quiser escolher por nome do produto
             .contains('Atlas Fitness Tank')
