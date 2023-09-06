@@ -6,9 +6,6 @@ describe('Funcionalidade página de produtos', () => {
         cy.visit('produtos/')
     });
 
-    afterEach(() => {
-        cy.screenshot()
-});
 
     it('Deve selecionar um produto da lista', () => {
         cy.get('[class="product-block grid"]')
@@ -20,7 +17,7 @@ describe('Funcionalidade página de produtos', () => {
             .click()
     });
 
-    it.only('Deve adicionar um produto ao carrinho', () => {
+    it('Deve adicionar um produto ao carrinho', () => {
         var quantidade = 3
 
         cy.get('[class="product-block grid"]')
@@ -33,4 +30,10 @@ describe('Funcionalidade página de produtos', () => {
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
         cy.get('.woocommerce-message').should('contain', quantidade + ' × “Atlas Fitness Tank” foram adicionados no seu carrinho.')
     });
+
+    it.only('Deve adicionar um produto ao carrinho - Usando comando customizado', () => {
+        cy.addProdutos('Argus All-Weather Tank', 'M', 2)
+    });
+
+
 });
